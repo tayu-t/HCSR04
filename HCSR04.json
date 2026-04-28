@@ -1,0 +1,36 @@
+{
+    "name" : "距離センサー",
+    "plugin" : "HCSR04",
+    "icon": "HCSR04.png",
+    "moduleType" :  "Sensor",
+    "param" : [
+      {
+        "key": "trigPin",
+        "label": "Trig Pin",
+        "default": 15,
+        "mainUI": "input",
+        "detailUI": "stepper"
+      },
+      {
+        "key": "echoPin",
+        "label": "Echo Pin",
+        "default": 14,
+        "mainUI": "input",
+        "detailUI": "stepper"
+      },
+      {
+        "key": "returnIndex",
+        "label": "Return Index\n notUse = -1",
+        "default": 1,
+        "mainUI": "input",
+        "detailUI": "stepper"
+      },
+      {
+        "key": "controlSensorIndex",
+        "label": "Control Sensor Index\n notUse = -1",
+        "default": -1,
+        "mainUI": "input",
+        "detailUI": "stepper"
+      }
+    ]
+}

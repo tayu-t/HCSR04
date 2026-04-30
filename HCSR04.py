@@ -67,5 +67,9 @@ class HCSR04(Sensor):
             self.risingTime = 0.0
             
     def getFeedbackList(self)->list[list]:
-        return [[self.returnIndex,self.cm]]
+        
+        if(self.controlSensorIndex == -1 or self.u[self.controlSensorIndex] > 0):
+            return [[self.returnIndex,self.cm]]
+        else:
+            return [[self.returnIndex,0.0]]
 

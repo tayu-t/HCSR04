@@ -34,6 +34,8 @@ class HCSR04(Sensor):
         self.returnIndex = int(param['returnIndex'])
         self.initPins()
         
+        print(f"Initialized HCSR04: trigPin={self.trigPin}, echoPin={self.echoPin}, controlSensorIndex={self.controlSensorIndex}, returnIndex={self.returnIndex}")
+        
     
     def initPins(self):
         """各ピンの初期化
@@ -47,6 +49,8 @@ class HCSR04(Sensor):
     def update(self,u):
         if(self.controlSensorIndex == -1 or u[self.controlSensorIndex] > 0):
             self.setTrig()
+        else:
+            self.cm = 0.0
             
     def setTrig(self):
         if(time.time() - self.lastTrigTime > self.TrigSleepTime):
@@ -67,9 +71,6 @@ class HCSR04(Sensor):
             self.risingTime = 0.0
             
     def getFeedbackList(self)->list[list]:
-        
-        if(self.controlSensorIndex == -1 or self.u[self.controlSensorIndex] > 0):
-            return [[self.returnIndex,self.cm]]
-        else:
-            return [[self.returnIndex,0.0]]
+        return [[self.returnIndex,self.cm]]
+   
 
